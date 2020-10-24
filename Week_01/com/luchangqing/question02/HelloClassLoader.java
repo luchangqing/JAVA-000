@@ -16,9 +16,9 @@ public class HelloClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        InputStream resourceAsStream = this.getResourceAsStream("Hello.xlass");
+
         byte[] bytes = null;
-        try {
+        try (InputStream resourceAsStream = this.getResourceAsStream("Hello.xlass")){
             bytes = toByteArray(resourceAsStream);
         } catch (IOException e) {
             e.printStackTrace();
